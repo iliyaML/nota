@@ -55,7 +55,7 @@ router.delete('/:id', (req, res) => {
   Idea.remove({ _id: req.params.id })
   .then(() => {
     req.flash('successMsg', 'Idea removed');
-    res.redirect('');
+    res.redirect('/ideas');
   });
 });
 
@@ -88,7 +88,7 @@ router.post('/', (req, res) => {
     .save()
     .then(idea => {
       req.flash('successMsg', 'Idea added');
-      res.redirect('');
+      res.redirect('/ideas');
     });
   }
 });
