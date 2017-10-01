@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 // constants
 const PORT = 5000;
@@ -31,6 +32,10 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
+// methodoverride middleware
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
 
 // index route
 app.get('/', (req, res) => {
@@ -63,7 +68,18 @@ app.get('/ideas/edit/:id', (req, res) => {
 
 // edit form process
 app.put('/ideas/:id', (req, res) => {
-  res.send('PUT');
+  Idea.findOne({
+    _id: req.params.id
+  })
+  .then(idea => {
+    idea.title = req.body.title;
+    idea.details = req.body.details;
+
+    idea.save()
+    .then(idea => {
+      res.redirect('/ideas');
+    });
+  });
 });
 
 // idea index page
