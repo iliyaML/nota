@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/iliyaml/nota#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.11.14"

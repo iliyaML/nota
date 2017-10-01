@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const PORT = 5000;
 
@@ -24,6 +25,12 @@ const Idea = mongoose.model('ideas');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// bodyparser middleware
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+
 // index route
 app.get('/', (req, res) => {
   res.render('index', {
@@ -39,6 +46,27 @@ app.get('/about', (req, res) => {
 // add idea form
 app.get('/ideas/add', (req, res) => {
   res.render('ideas/add');
+});
+
+// process idea form
+app.post('/ideas', (req, res) => {
+  let errors = [];
+
+  if(!req.body.title){
+    errors.push({ text: 'Please add a title' });
+  }
+  if(!req.body.details){
+    errors.push({ text: 'Please add some details' });
+  }
+  if(errors.length > 0){
+    res.render('ideas/add', {
+      errors: errors,
+      title: req.body.title,
+      details: req.body.details
+    });
+  } else {
+    res.send('passed');
+  }
 });
 
 // server listening

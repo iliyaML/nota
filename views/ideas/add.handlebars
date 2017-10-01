@@ -1,9 +1,17 @@
+{{#each errors}}
+  <div class="alert alert-danger">
+    {{text}}
+  </div>
+{{else}}
+
+{{/each}}
+
 <div class="card card-body">
   <h3>Idea</h3>
   <form action="/ideas" method="post">
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" name="" value="title" class="form-control">
+      <input type="text" name="title" value="" class="form-control">
     </div>
     <div class="form-group">
       <label for="details">Details</label>
