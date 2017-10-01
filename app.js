@@ -48,6 +48,17 @@ app.get('/ideas/add', (req, res) => {
   res.render('ideas/add');
 });
 
+// idea index page
+app.get('/ideas', (req, res) => {
+  Idea.find({})
+  .sort({ date: 'desc' })
+  .then(ideas => {
+    res.render('ideas/index', {
+      ideas: ideas
+    });
+  });
+});
+
 // process idea form
 app.post('/ideas', (req, res) => {
   let errors = [];
