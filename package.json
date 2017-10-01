@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/iliyaml/nota/issues"
   },
-  "homepage": "https://github.com/iliyaml/nota#readme"
+  "homepage": "https://github.com/iliyaml/nota#readme",
+  "dependencies": {
+    "express": "^4.16.1"
+  }
 }
