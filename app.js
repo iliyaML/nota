@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 
+// constants
 const PORT = 5000;
 
 // map global promise - get rid of warning
@@ -46,6 +47,18 @@ app.get('/about', (req, res) => {
 // add idea form
 app.get('/ideas/add', (req, res) => {
   res.render('ideas/add');
+});
+
+// edit idea form
+app.get('/ideas/edit/:id', (req, res) => {
+  Idea.findOne({
+    _id: req.params.id
+  })
+  .then(idea => {
+    res.render('ideas/edit', {
+      idea: idea
+    });
+  });
 });
 
 // idea index page
