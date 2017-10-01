@@ -36,6 +36,11 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
+// add idea form
+app.get('/ideas/add', (req, res) => {
+  res.render('ideas/add');
+});
+
 // server listening
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
