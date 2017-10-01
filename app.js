@@ -16,6 +16,10 @@ mongoose.connect('mongodb://localhost/nota', {
 }).then(() => console.log('MongoDB connected...'))
 .catch(err => console.log(err));
 
+// load idea model
+require('./models/Idea');
+const Idea = mongoose.model('ideas');
+
 // handlebars middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
