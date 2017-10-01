@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 
 // constants
 const PORT = 5000;
@@ -75,6 +76,9 @@ app.get('/about', (req, res) => {
 // routes
 app.use('/ideas', ideas);
 app.use('/users', users);
+
+// passport config
+require('./config/passport')(passport);
 
 // server listening
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
