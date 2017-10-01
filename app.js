@@ -74,11 +74,18 @@ app.put('/ideas/:id', (req, res) => {
   .then(idea => {
     idea.title = req.body.title;
     idea.details = req.body.details;
-
     idea.save()
     .then(idea => {
       res.redirect('/ideas');
     });
+  });
+});
+
+// delete idea process
+app.delete('/ideas/:id', (req, res) => {
+  Idea.remove({ _id: req.params.id })
+  .then(() => {
+    res.redirect('/ideas');
   });
 });
 
