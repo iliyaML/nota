@@ -61,6 +61,11 @@ app.get('/ideas/edit/:id', (req, res) => {
   });
 });
 
+// edit form process
+app.put('/ideas/:id', (req, res) => {
+  res.send('PUT');
+});
+
 // idea index page
 app.get('/ideas', (req, res) => {
   Idea.find({})
