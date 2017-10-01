@@ -52,7 +52,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
     idea.save()
     .then(idea => {
       req.flash('successMsg', 'Idea updated');
-      res.redirect('');
+      res.redirect('/ideas');
     });
   });
 });
