@@ -10,8 +10,11 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-// constants
-const PORT = 5000;
+// Port
+const PORT = process.env.PORT || 5000;
+
+// DB config
+const db = require('./config/database');
 
 // load routes
 const ideas = require('./routes/ideas');
@@ -22,7 +25,7 @@ const users = require('./routes/users');
 mongoose.Promise = global.Promise;
 
 // set up mongoose/mongodb connection
-mongoose.connect('mongodb://localhost/nota', {
+mongoose.connect(db.mongoURI, {
   useMongoClient: true // to prevent warning
 }).then(() => console.log('MongoDB connected...'))
 .catch(err => console.log(err));
