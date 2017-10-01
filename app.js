@@ -1,6 +1,7 @@
 // import dependencies
 const express = require('express');
 const app = express();
+const path = require('path');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -28,6 +29,8 @@ mongoose.connect('mongodb://localhost/nota', {
 // handlebars middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // bodyparser middleware
 // parse application/x-www-form-urlencoded
