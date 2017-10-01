@@ -1,0 +1,19 @@
+{
+  "name": "nota",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iliyaml/nota.git"
+  },
+  "author": "Iliya Mohamad Lokman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iliyaml/nota/issues"
+  },
+  "homepage": "https://github.com/iliyaml/nota#readme"
+}
